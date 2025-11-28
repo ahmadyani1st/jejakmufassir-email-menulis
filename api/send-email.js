@@ -26,12 +26,12 @@ export default async function handler(req, res) {
       description, 
       focusKeyword, 
       seoScore, 
-      authorName,
-      postId,
+      name,
+      postID,
       timestamp 
     } = req.body;
 
-    console.log('📧 Received email request for post:', postId);
+    console.log('📧 Received email request for post:', postID);
 
     // Validasi data yang diperlukan
     if (!title || !content) {
@@ -93,13 +93,13 @@ export default async function handler(req, res) {
         <div class="container">
           <div class="header">
             <h1 style="margin: 0; color: #2c3e50;">📝 Artikel Baru Dipublikasikan</h1>
-            <p><strong>ID Artikel:</strong> ${postId}</p>
+            <p><strong>ID Artikel:</strong> ${postID}</p>
             <p><strong>Waktu:</strong> ${timestamp}</p>
           </div>
 
           <div class="section">
             <h3 style="margin-top: 0; color: #2c3e50;">👤 Informasi Penulis</h3>
-            <p><strong>Penulis:</strong> ${authorName || 'Tidak tersedia'}</p>
+            <p><strong>Penulis:</strong> ${name || 'Tidak tersedia'}</p>
           </div>
 
           <div class="section">
