@@ -1,0 +1,16 @@
+{
+  "name": "jejak-mufassir-email",
+  "version": "1.0.0",
+  "description": "Backend for Jejak Mufassir email notifications",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.7"
+  },
+  "engines": {
+    "node": ">=18.x"
+  }
+}
