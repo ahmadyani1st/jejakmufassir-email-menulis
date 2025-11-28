@@ -1,20 +1,19 @@
-// api/send-email.js
+// api/send-email.js - PERBAIKAN CORS
 const nodemailer = require('nodemailer');
 
-// Import admin SDK untuk Firebase
-const admin = require('firebase-admin');
+export default async function handler(req, res) {
+  // Set CORS headers - DIPERBAIKI
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Access-Control-Allow-Origin', 'https://www.jejakmufassir.my.id');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization');
 
-// Inisialisasi Firebase Admin
-if (!admin.apps.length) {
-  admin.initializeApp({
-    credential: admin.credential.cert({
-      projectId: process.env.FIREBASE_PROJECT_ID,
-      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-      privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
-    }),
-    databaseURL: process.env.FIREBASE_DATABASE_URL
-  });
-}
+  // Handle preflight request - DIPERBAIKI
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
+  }
+
 
 export default async function handler(req, res) {
   // Set CORS headers
